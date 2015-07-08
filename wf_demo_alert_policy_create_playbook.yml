@@ -1,4 +1,21 @@
-- hosts: all
+---
+- name: Add alert policy
+  hosts: localhost
+  gather_facts: False
+  connection: local
   tasks:
-    - name: Print OS Name 
-      shell: "uname -a"
+    - name: Create alert policy > 80
+      clc_alert_policy:
+        alias: wfad
+        name: Test policy disk > 80
+        alert_recipients:
+            - shan.sundaram@centurylink.com
+            - shan.sundaram@outlook.com
+        metric: 'disk'
+        duration: '00:05:00'
+        threshold: 80
+        state: present
+      register: clc
+
+    - name: debug
+      debug: var=clc
