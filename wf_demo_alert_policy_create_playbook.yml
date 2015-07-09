@@ -1,7 +1,7 @@
 ---
 - name: Add alert policy
   hosts: localhost
-  gather_facts: False
+  gather_facts: True
   connection: local
   tasks:
     - name: Create alert policy > 80
