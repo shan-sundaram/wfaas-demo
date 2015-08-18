@@ -1,7 +1,5 @@
 - hosts: all
-  hosts: localhost
   gather_facts: True
-  connection: local
   tasks:
     - name: Print OS Name 
       shell: "uname -a"
