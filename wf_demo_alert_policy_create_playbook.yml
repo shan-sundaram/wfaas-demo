@@ -1,6 +1,6 @@
 ---
 - name: Add alert policy
-  hosts: localhost
+  hosts: all
   gather_facts: True
   connection: local
   tasks:
