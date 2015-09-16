@@ -6,7 +6,7 @@
   tasks:
     - name: Create alert policy > 80
       clc_alert_policy:
-        alias: wfaq
+        alias: wfad
         name: Test policy disk > 80
         alert_recipients:
             - shan.sundaram@centurylink.com
