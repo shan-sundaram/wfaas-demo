@@ -16,6 +16,6 @@
         threshold: 80
         state: present
       register: clc
-    - pause: seconds=8
+    - pause: seconds=15
     - name: debug
       debug: var=clc
