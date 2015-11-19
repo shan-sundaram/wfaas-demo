@@ -28,7 +28,7 @@
 
     - name: Create Public IP for the server
       clc_publicip:
-        server_ids: "{{ item.name }}"
+        server_ids: "{{ clc_svr.name }}"
         ports:
           - "80"
           - "443"
