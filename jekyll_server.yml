@@ -1,8 +1,5 @@
 ---
 - name: Playbook to create a basic jekyll site
-  apt: name={{ item }} state=present
-  with_items:
-  - clc_svr
   hosts: localhost
   connection: local
   gather_facts: true
@@ -31,12 +28,12 @@
 
     - name: Create Public IP for the server
       clc_publicip:
-        server_ids: "{{ item.name }}"
+        server_ids: "{{ clc_svr.servers[0].name }}"
         ports:
           - "80"
           - "443"
         state: present
-        with_flattened: clc_svr.servers
+#        with_flattened: clc_svr.servers
 
     - name: Add the new server to the inventory
       add_host: name={{clc_svr.servers[0].name}}  groups=jekyll_group ansible_ssh_pass=abc123!$# ansible_connection=ssh ansible_ssh_host={{clc_svr.servers[0].ipaddress}} ansible_ssh_user=root
