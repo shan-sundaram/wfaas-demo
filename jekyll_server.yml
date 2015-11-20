@@ -30,15 +30,16 @@
       clc_publicip:
         server_ids: "{{ clc_svr.servers[0].name }}"
         ports:
-          - "22"
           - "80"
           - "443"
         state: present
 #        with_flattened: clc_svr.servers
 
+    - name: Wait for SSH to Come up on New Servers
+      wait_for: host={{ clc_svr.servers[0].ipaddress }} port=22 delay=5 timeout=320 state=started
+
     - name: Add the new server to the inventory
       add_host: name={{clc_svr.servers[0].name}}  groups=jekyll_group ansible_ssh_pass=abc123!$# ansible_connection=ssh ansible_ssh_host={{clc_svr.servers[0].ipaddress}} ansible_ssh_user=root
-
 
 - hosts: jekyll_group
   tasks:
