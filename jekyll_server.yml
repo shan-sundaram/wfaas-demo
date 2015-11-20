@@ -30,6 +30,7 @@
       clc_publicip:
         server_ids: "{{ clc_svr.servers[0].name }}"
         ports:
+          - "22"
           - "80"
           - "443"
         state: present
