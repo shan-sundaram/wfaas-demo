@@ -1,5 +1,8 @@
 ---
 - name: Playbook to create a basic jekyll site
+  apt: name={{ item }} state=present
+  with_items:
+  - clc_svr
   hosts: localhost
   connection: local
   gather_facts: true
@@ -28,7 +31,7 @@
 
     - name: Create Public IP for the server
       clc_publicip:
-        server_ids: "{{ clc_svr.servers[0].name }}"
+        server_ids: "{{ item.name }}"
         ports:
           - "80"
           - "443"
