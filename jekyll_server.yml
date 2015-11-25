@@ -53,13 +53,10 @@
       apt: name=nodejs state=present
 
     - name: Install ruby
-      apt: pkg={{ item }} state=latest
-      with_items:
-        - ruby2.0
-        - ruby2.0-dev
+      apt: name=ruby-full state=present
 
     - name: Install Jekyll
-      shell: gem install jekyll
+      shell: gem install jekyll -v 2.5.3
 
     - name: Create Blog Directory
       file: path=/data01 state=directory mode=0755
