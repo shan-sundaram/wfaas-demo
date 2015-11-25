@@ -53,7 +53,9 @@
       apt: name=nodejs state=present
 
     - name: Install ruby
-      apt: name=ruby-full state=latest
+      apt: pkg={{ item }} state=latest
+      with_items:
+        - ruby2.0
 
     - name: Install Jekyll
       shell: gem install jekyll
