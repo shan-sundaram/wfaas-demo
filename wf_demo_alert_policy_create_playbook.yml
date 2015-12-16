@@ -2,10 +2,10 @@
 - name: Add alert policy
   hosts: all
   gather_facts: True
-  connection: local
+  #connection: local
   tasks:
     - name: Create alert policy > 80
-      clc_alert_policye:
+      clc_alert_policy:
         alias: wfad
         name: Test policy disk > 80
         alert_recipients:
